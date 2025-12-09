@@ -1,14 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Star, MessageCircle, Sparkles } from "lucide-react";
+import { Check, Star, Sparkles } from "lucide-react";
+import ShinyButton from "./ShinyButton";
+import CosmicCard from "./ui/CosmicCard";
 
 export default function Pricing() {
   const whatsappLink = "https://wa.me/201128498956?text=Hello,%20I%20want%20to%20subscribe%20to%20Hyper%20Sat%20(1%20Year%20Plan)";
 
   const features = [
     "Access to +10,000 Premium Channels",
-    "4K & 8K Ultra HD Quality",
+    "4K & Ultra HD Quality",
     "Anti-Freeze Technology 3.0",
     "Works on Smart TV, Mobile & PC",
     "24/7 VIP Support on WhatsApp",
@@ -18,7 +20,7 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="py-32 relative overflow-hidden flex items-center justify-center min-h-screen">
+    <section id="pricing" className="py-12 md:py-24 lg:py-32 relative overflow-hidden flex items-center justify-center min-h-screen">
       {/* Animated Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary/30 via-accent/20 to-primary/30 blur-[140px] rounded-full pointer-events-none animate-pulse" />
       
@@ -29,12 +31,12 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-3 md:mb-4 tracking-tight px-4">
             One Plan. <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">Unlimited Access.</span>
           </h2>
-          <p className="text-xl text-slate-400">Simple pricing for a premium experience.</p>
+          <p className="text-base sm:text-lg md:text-xl text-slate-400 px-4">Simple pricing for a premium experience.</p>
         </motion.div>
 
         {/* Golden Ticket Card */}
@@ -43,56 +45,11 @@ export default function Pricing() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl mx-auto"
+          className="max-w-5xl mx-auto w-full px-4"
         >
-          <div className="relative group">
-            {/* Pulsing Glow Border - Golden Ticket Effect */}
-            <motion.div
-              className="absolute -inset-[2px] rounded-3xl opacity-75"
-              animate={{
-                background: [
-                  "linear-gradient(135deg, rgba(0, 102, 255, 0.5), rgba(255, 51, 153, 0.5), rgba(0, 102, 255, 0.5))",
-                  "linear-gradient(135deg, rgba(255, 51, 153, 0.5), rgba(0, 102, 255, 0.5), rgba(255, 51, 153, 0.5))",
-                  "linear-gradient(135deg, rgba(0, 102, 255, 0.5), rgba(255, 51, 153, 0.5), rgba(0, 102, 255, 0.5))",
-                ],
-                boxShadow: [
-                  "0 0 40px rgba(0, 102, 255, 0.4), 0 0 80px rgba(255, 51, 153, 0.3)",
-                  "0 0 60px rgba(255, 51, 153, 0.5), 0 0 100px rgba(0, 102, 255, 0.4)",
-                  "0 0 40px rgba(0, 102, 255, 0.4), 0 0 80px rgba(255, 51, 153, 0.3)",
-                ],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{
-                filter: "blur(8px)",
-              }}
-            />
-
-            {/* Animated Shimmer Effect */}
-            <motion.div
-              className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
-              animate={{
-                background: [
-                  "linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%)",
-                ],
-                x: ["-200%", "200%"],
-              }}
-              transition={{
-                x: {
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "linear",
-                },
-              }}
-            />
-
-            {/* Main Card Container */}
-            <div className="relative rounded-3xl bg-gradient-to-br from-[#0A0A0A]/95 via-[#0A0A0A]/90 to-[#0A0A0A]/95 backdrop-blur-2xl border border-white/20 p-1 overflow-hidden">
-              {/* Inner Content */}
-              <div className="relative rounded-[22px] bg-[#0A0A0A]/80 backdrop-blur-xl p-8 md:p-16">
+          <CosmicCard className="rounded-3xl w-full">
+            {/* Inner Content */}
+            <div className="relative p-6 sm:p-8 md:p-16">
                 <div className="flex flex-col lg:flex-row items-center gap-12">
                   
                   {/* Left Section: Price & CTA */}
@@ -113,26 +70,26 @@ export default function Pricing() {
                     {/* Price */}
                     <div>
                       <div className="flex items-baseline justify-center lg:justify-start gap-3 mb-3">
-                        <span className="text-7xl md:text-8xl font-bold text-white tracking-tighter bg-gradient-to-r from-white via-white to-slate-200 bg-clip-text text-transparent">
+                        <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter bg-gradient-to-r from-white via-white to-slate-200 bg-clip-text text-transparent">
                           $60
                         </span>
-                        <span className="text-2xl text-slate-400">/ year</span>
+                        <span className="text-xl sm:text-2xl text-slate-400">/ year</span>
                       </div>
-                      <p className="text-lg text-slate-500">Less than $5 per month. Cancel anytime.</p>
+                      <p className="text-base sm:text-lg text-slate-500">Less than $5 per month. Cancel anytime.</p>
                     </div>
 
                     {/* CTA Button */}
-                    <motion.a
-                      href={whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="inline-flex w-full lg:w-auto items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white rounded-xl font-bold text-lg transition-all shadow-[0_0_30px_rgba(0,102,255,0.4)] hover:shadow-[0_0_40px_rgba(0,102,255,0.6)]"
+                      className="inline-flex w-full md:w-auto"
                     >
-                      <MessageCircle className="w-6 h-6" />
-                      Subscribe via WhatsApp
-                    </motion.a>
+                      <ShinyButton
+                        text="Subscribe via WhatsApp"
+                        href={whatsappLink}
+                        className="w-full md:w-auto"
+                      />
+                    </motion.div>
                   </div>
 
                   {/* Divider */}
@@ -140,7 +97,7 @@ export default function Pricing() {
 
                   {/* Right Section: Features */}
                   <div className="flex-1 w-full">
-                    <h3 className="text-2xl font-bold text-white mb-8 text-center lg:text-left">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 md:mb-8 text-center lg:text-left">
                       What's included:
                     </h3>
                     <ul className="space-y-5">
@@ -163,9 +120,8 @@ export default function Pricing() {
                   </div>
 
                 </div>
-              </div>
             </div>
-          </div>
+          </CosmicCard>
         </motion.div>
       </div>
     </section>

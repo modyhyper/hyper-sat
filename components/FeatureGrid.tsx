@@ -1,218 +1,113 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Tv,
-  Zap,
-  Globe,
-  Shield,
-  Smartphone,
-  Clock,
-} from "lucide-react";
+import { Tv, Wifi, Shield, Smartphone, Globe, Zap } from "lucide-react";
+import CosmicCard from "./ui/CosmicCard";
 
-interface Feature {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  gradient: string;
-  glowColor: string;
-}
-
-const features: Feature[] = [
+// قائمة المميزات
+const features = [
   {
-    icon: <Tv className="w-8 h-8" />,
-    title: "10,000+ Channels",
-    description: "Access a vast library of international channels from around the world.",
-    gradient: "from-[#0066FF] to-[#0066FF]/50",
-    glowColor: "#0066FF",
+    icon: <Tv className="w-6 h-6 text-white" />,
+    title: "Premium Content Library",
+    description: "Unlimited access to a vast library of live events, movies, and series in stunning 4K & Ultra HD.",
   },
   {
-    icon: <Zap className="w-8 h-8" />,
-    title: "Lightning Fast",
-    description: "Stream without buffering with our optimized servers and CDN network.",
-    gradient: "from-[#FF3399] to-[#FF3399]/50",
-    glowColor: "#FF3399",
+    icon: <Zap className="w-6 h-6 text-white" />,
+    title: "High-Speed CDN",
+    description: "Powered by global server infrastructure ensuring low latency and buffer-free streaming.",
   },
   {
-    icon: <Globe className="w-8 h-8" />,
-    title: "Global Content",
-    description: "Watch content from every corner of the globe in multiple languages.",
-    gradient: "from-[#0066FF] to-[#FF3399]",
-    glowColor: "#0066FF",
+    icon: <Smartphone className="w-6 h-6 text-white" />,
+    title: "Cross-Platform Support",
+    description: "Stream seamlessly on your Smart TV, Android, iOS, Windows, and MacOS devices.",
   },
   {
-    icon: <Shield className="w-8 h-8" />,
-    title: "Secure & Private",
-    description: "Your privacy is our priority with end-to-end encryption.",
-    gradient: "from-[#FF3399] to-[#0066FF]",
-    glowColor: "#FF3399",
+    icon: <Shield className="w-6 h-6 text-white" />,
+    title: "Bank-Level Security",
+    description: "Your connection is fully encrypted with advanced SSL protocols to ensure total data protection.",
   },
   {
-    icon: <Smartphone className="w-8 h-8" />,
-    title: "Multi-Device",
-    description: "Watch on TV, phone, tablet, or computer. One subscription, unlimited devices.",
-    gradient: "from-[#0066FF] to-[#0066FF]/50",
-    glowColor: "#0066FF",
+    icon: <Globe className="w-6 h-6 text-white" />,
+    title: "Global Access",
+    description: "Enjoy your favorite content from anywhere in the world. No geographical boundaries.",
   },
   {
-    icon: <Clock className="w-8 h-8" />,
-    title: "Catch-Up TV",
-    description: "Never miss your favorite shows with our catch-up and recording features.",
-    gradient: "from-[#FF3399] to-[#FF3399]/50",
-    glowColor: "#FF3399",
+    icon: <Wifi className="w-6 h-6 text-white" />,
+    title: "Instant Setup",
+    description: "Receive your login credentials and start watching immediately after registration.",
   },
 ];
 
-const containerVariants = {
+const container = {
   hidden: { opacity: 0 },
-  visible: {
+  show: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
-const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 30,
-    scale: 0.95,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
 };
 
 export default function FeatureGrid() {
   return (
-    <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 relative">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
+    <section id="features" className="py-12 md:py-24 relative bg-transparent overflow-hidden">
+      <div className="container px-4 relative z-10">
+        
+        {/* العنوان */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-16"
+          viewport={{ once: true }}
+          className="text-center mb-8 md:mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4 px-4">
             Why Choose <span className="bg-gradient-to-r from-[#0066FF] to-[#FF3399] bg-clip-text text-transparent">Hyper Sat</span>?
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-            Experience the ultimate in entertainment with features designed for the modern viewer.
+          <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg px-4">
+            We combined speed, quality, and stability to bring you the ultimate entertainment experience.
           </p>
         </motion.div>
 
-        {/* Bento Grid */}
+        {/* الشبكة */}
         <motion.div
-          variants={containerVariants}
+          variants={container}
           initial="hidden"
-          whileInView="visible"
+          whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch px-4"
         >
-          {features.map((feature, index) => (
+          {features.map((feature, idx) => (
             <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{ 
-                scale: 1.02, 
-                y: -8,
-                transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
-              }}
-              className="group relative"
+              key={idx}
+              variants={item}
+              className="w-full h-full flex"
             >
-              {/* Pulsing Glow Border */}
-              <motion.div
-                className="absolute -inset-[2px] rounded-3xl opacity-0 group-hover:opacity-75 transition-opacity duration-500"
-                animate={{
-                  background: [
-                    `linear-gradient(135deg, ${feature.glowColor}80, ${feature.glowColor === "#0066FF" ? "rgba(255, 51, 153, 0.5)" : "rgba(0, 102, 255, 0.5)"}, ${feature.glowColor}80)`,
-                    `linear-gradient(135deg, ${feature.glowColor === "#0066FF" ? "rgba(255, 51, 153, 0.5)" : "rgba(0, 102, 255, 0.5)"}, ${feature.glowColor}80, ${feature.glowColor === "#0066FF" ? "rgba(255, 51, 153, 0.5)" : "rgba(0, 102, 255, 0.5)"})`,
-                    `linear-gradient(135deg, ${feature.glowColor}80, ${feature.glowColor === "#0066FF" ? "rgba(255, 51, 153, 0.5)" : "rgba(0, 102, 255, 0.5)"}, ${feature.glowColor}80)`,
-                  ],
-                  boxShadow: [
-                    `0 0 30px ${feature.glowColor}60, 0 0 60px ${feature.glowColor}40`,
-                    `0 0 40px ${feature.glowColor}80, 0 0 80px ${feature.glowColor}60`,
-                    `0 0 30px ${feature.glowColor}60, 0 0 60px ${feature.glowColor}40`,
-                  ],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                style={{
-                  filter: "blur(6px)",
-                }}
-              />
-
-              {/* Animated Shimmer Effect */}
-              <motion.div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
-                animate={{
-                  background: [
-                    "linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%)",
-                  ],
-                  x: ["-200%", "200%"],
-                }}
-                transition={{
-                  x: {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "linear",
-                  },
-                }}
-              />
-
-              {/* Backlight Glow Effect on Hover */}
-              <div 
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl -z-10"
-                style={{
-                  background: feature.glowColor === "#0066FF" 
-                    ? "radial-gradient(circle, rgba(0, 102, 255, 0.3), transparent 70%)"
-                    : "radial-gradient(circle, rgba(255, 51, 153, 0.3), transparent 70%)",
-                }}
-              />
-
-              {/* Main Card Container */}
-              <div className="relative rounded-3xl bg-gradient-to-br from-[#0A0A0A]/95 via-[#0A0A0A]/90 to-[#0A0A0A]/95 backdrop-blur-2xl border border-white/20 p-1 overflow-hidden">
-                {/* Inner Content */}
-                <div className="relative rounded-[22px] bg-white/5 backdrop-blur-xl p-8">
-                  {/* Content */}
-                  <div className="relative z-10">
-                    {/* Icon with Scale and Glow Animation */}
-                    <motion.div
-                      whileHover={{ 
-                        scale: 1.15, 
-                        rotate: 5,
-                        filter: feature.glowColor === "#0066FF" 
-                          ? "drop-shadow(0 0 20px rgba(0, 102, 255, 0.8))"
-                          : "drop-shadow(0 0 20px rgba(255, 51, 153, 0.8))"
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${feature.gradient} mb-4 text-white shadow-lg`}
-                    >
+              <CosmicCard className="h-full">
+                <div className="p-8 h-full flex flex-col items-start transition-all duration-300 group-hover:bg-white/[0.02]">
+                  
+                  {/* الأيقونة */}
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="h-12 w-12 rounded-xl border border-white/10 bg-gradient-to-br from-[#0066FF]/20 to-[#FF3399]/20 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform duration-300">
                       {feature.icon}
-                    </motion.div>
-                    
-                    <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-white transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">
-                      {feature.description}
-                    </p>
+                    </div>
+                    <h3 className="text-xl font-bold text-white tracking-wide">{feature.title}</h3>
+                  </div>
+
+                  {/* الوصف */}
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                    {feature.description}
+                  </p>
+
+                  {/* الخطوط الجمالية في الأسفل */}
+                  <div className="mt-auto pt-2 w-full flex items-center gap-2 opacity-50">
+                      <div className="h-1.5 w-1.5 rounded-full bg-[#0066FF]" />
+                      <div className="h-[1px] flex-1 bg-gradient-to-r from-[#0066FF]/50 to-transparent" />
                   </div>
                 </div>
-              </div>
+              </CosmicCard>
             </motion.div>
           ))}
         </motion.div>
@@ -220,4 +115,3 @@ export default function FeatureGrid() {
     </section>
   );
 }
-

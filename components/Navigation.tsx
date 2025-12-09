@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import ShinyButton from "./ShinyButton";
 
 interface NavigationProps {
   locale?: "en" | "ar";
@@ -83,16 +84,9 @@ export default function Navigation({ locale = "en" }: NavigationProps) {
                 {item.label}
               </motion.a>
             ))}
-            <motion.a
-              href="https://wa.me/201128498956"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 bg-[#0066FF] text-white rounded-lg font-semibold shadow-[0_0_20px_rgba(0,102,255,0.3)] hover:shadow-[0_0_30px_rgba(0,102,255,0.5)] transition-all duration-300"
-            >
-              Get Started
-            </motion.a>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <ShinyButton text="Get Started" href="#pricing" />
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -131,15 +125,9 @@ export default function Navigation({ locale = "en" }: NavigationProps) {
                   {item.label}
                 </motion.a>
               ))}
-              <motion.a
-                href="https://wa.me/201128498956"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileTap={{ scale: 0.95 }}
-                className="w-full px-6 py-2.5 bg-[#0066FF] text-white rounded-lg font-semibold shadow-[0_0_20px_rgba(0,102,255,0.3)] text-center block"
-              >
-                Get Started
-              </motion.a>
+              <motion.div whileTap={{ scale: 0.95 }}>
+                <ShinyButton text="Get Started" href="#pricing" className="w-full" />
+              </motion.div>
             </div>
           </motion.div>
         )}

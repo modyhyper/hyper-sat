@@ -2,23 +2,29 @@
 
 import { motion } from "framer-motion";
 import { Film, Play } from "lucide-react";
+import Image from "next/image";
 
-// 1. بيانات القنوات (الوان متدرجة احترافية)
+// 1. بيانات القنوات (مع مسارات الصور)
 const channels = [
-  { name: "beIN", gradient: "from-violet-900 via-purple-800 to-indigo-900" },
-  { name: "NETFLIX", gradient: "from-red-900 via-red-700 to-black" },
-  { name: "SHAHID", gradient: "from-green-900 via-emerald-800 to-teal-900" },
-  { name: "OSN", gradient: "from-orange-700 via-red-800 to-rose-900" },
-  { name: "Disney+", gradient: "from-blue-900 via-blue-800 to-cyan-900" },
-  { name: "HBO", gradient: "from-gray-900 via-slate-800 to-black" },
-  { name: "Rotana", gradient: "from-teal-800 via-green-800 to-emerald-900" },
+  { name: "beIN", imagePath: "/assets/logos/bein.png" },
+  { name: "NETFLIX", imagePath: "/assets/logos/netflix.png" },
+  { name: "SHAHID", imagePath: "/assets/logos/shahid.png" },
+  { name: "OSN", imagePath: "/assets/logos/osn.png" },
+  { name: "Disney+", imagePath: "/assets/logos/disney.png" },
+  { name: "HBO", imagePath: "/assets/logos/hbo.png" },
+  { name: "Rotana", imagePath: "/assets/logos/rotana.png" },
 ];
 
 // 2. بيانات الأفلام والمسلسلات
 const movies = [
-  "House of Dragon", "Breaking Bad", "Stranger Things", 
-  "Oppenheimer", "El Heshashin", "Game of Thrones", 
-  "The Office", "Friends"
+  { title: "House of Dragon", img: "/assets/posters/house_dragon.jpg" },
+  { title: "Breaking Bad", img: "/assets/posters/breaking_bad.jpg" },
+  { title: "Stranger Things", img: "/assets/posters/stranger_things.jpg" },
+  { title: "Oppenheimer", img: "/assets/posters/oppenheimer.jpg" },
+  { title: "El Heshashin", img: "/assets/posters/heshashin.jpg" },
+  { title: "Game of Thrones", img: "/assets/posters/got.jpg" },
+  { title: "The Office", img: "/assets/posters/the_office.jpg" },
+  { title: "Friends", img: "/assets/posters/friends.jpg" },
 ];
 
 export default function ContentTicker() {
@@ -44,12 +50,17 @@ export default function ContentTicker() {
           {[...channels, ...channels, ...channels, ...channels].map((channel, i) => (
             <div 
               key={i} 
-              className={`relative w-36 h-20 flex-shrink-0 rounded-xl overflow-hidden border border-white/5 shadow-lg group`}
+              className="relative w-36 h-20 flex-shrink-0 rounded-xl overflow-hidden border border-white/10 shadow-lg group bg-white/10 backdrop-blur-sm"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${channel.gradient} opacity-60`} />
-              <div className="absolute inset-0 backdrop-blur-sm bg-black/20" />
-              <div className="relative z-10 w-full h-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg tracking-wider drop-shadow-md">{channel.name}</span>
+              <div className="relative z-10 w-full h-full flex items-center justify-center p-4">
+                <Image
+                  src={channel.imagePath}
+                  alt={channel.name}
+                  width={96}
+                  height={48}
+                  className="w-24 h-12 object-contain"
+                  unoptimized
+                />
               </div>
             </div>
           ))}
@@ -70,24 +81,24 @@ export default function ContentTicker() {
           {[...movies, ...movies, ...movies, ...movies].map((movie, i) => (
             <div 
               key={i} 
-              className="relative w-32 h-48 flex-shrink-0 rounded-xl overflow-hidden border border-white/10 bg-[#111]"
+              className="relative w-32 h-48 flex-shrink-0 rounded-xl overflow-hidden border border-white/10 shadow-lg"
             >
-              {/* محاكاة شكل البوستر */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90 z-10" />
+              {/* Poster Image */}
+              <Image
+                src={movie.img}
+                alt={movie.title}
+                fill
+                className="object-cover"
+                unoptimized
+              />
               
-              <div className="absolute top-2 right-2 z-20">
-                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md">
-                   <Film className="w-3 h-3 text-white/70" />
-                </div>
-              </div>
-
-              <div className="absolute inset-0 flex items-center justify-center bg-white/5">
-                 <Play className="w-8 h-8 text-white/20 fill-white/10" />
-              </div>
-
+              {/* Gradient Overlay for Title Readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+              
+              {/* Title Overlay */}
               <div className="absolute bottom-0 w-full p-3 z-20 text-center">
-                <span className="text-gray-300 text-xs font-medium line-clamp-2 leading-tight">
-                  {movie}
+                <span className="text-white text-xs font-semibold line-clamp-2 leading-tight drop-shadow-lg">
+                  {movie.title}
                 </span>
               </div>
             </div>

@@ -17,6 +17,11 @@ export default function Footer() {
       { label: "About", href: "#about" },
       { label: "Reseller", href: "#reseller" },
     ],
+    legal: [
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Refund Policy", href: "/refund" },
+    ],
   };
 
   const socialLinks = [
@@ -29,7 +34,7 @@ export default function Footer() {
   return (
     <footer id="contact" className="border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
             <div className="mb-6">
@@ -41,8 +46,8 @@ export default function Footer() {
                 className="h-auto w-auto object-contain mb-4"
               />
             </div>
-            <p className="text-slate-400 text-sm">
-              Premium IPTV service for the modern viewer. Experience entertainment like never before.
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Premium streaming service for the modern viewer. Experience entertainment like never before.
             </p>
           </div>
 
@@ -55,7 +60,11 @@ export default function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-slate-400 hover:text-[#0066FF] hover:drop-shadow-[0_0_8px_rgba(0,102,255,0.8)] transition-all duration-300 text-sm"
+                      className={`text-sm transition-all duration-300 ${
+                        category === "legal"
+                          ? "text-neutral-400 hover:text-white"
+                          : "text-slate-400 hover:text-[#0066FF] hover:drop-shadow-[0_0_8px_rgba(0,102,255,0.8)]"
+                      }`}
                     >
                       {link.label}
                     </a>
@@ -68,9 +77,27 @@ export default function Footer() {
 
         {/* Social & Copyright */}
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-white/10">
-          <p className="text-slate-400 text-sm mb-4 sm:mb-0">
-            © {currentYear} Hyper Sat. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center sm:items-start mb-4 sm:mb-0">
+            <p className="text-slate-400 text-sm mb-2">
+              © {currentYear} Hyper Sat. All rights reserved.
+            </p>
+            {/* Legal Links */}
+            <div className="flex items-center gap-4 text-xs text-slate-500">
+              <a
+                href="/privacy"
+                className="hover:text-slate-400 transition-colors duration-300"
+              >
+                Privacy Policy
+              </a>
+              <span className="text-slate-600">•</span>
+              <a
+                href="/terms"
+                className="hover:text-slate-400 transition-colors duration-300"
+              >
+                Terms of Service
+              </a>
+            </div>
+          </div>
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => {
               const Icon = social.icon;

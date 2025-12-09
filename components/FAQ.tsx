@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import CosmicCard from "./ui/CosmicCard";
 
 interface FAQItem {
   question: string;
@@ -24,7 +25,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Is there a free trial?",
-    answer: "All our annual plans include a 7-day free trial period. You can test our service risk-free and cancel anytime during the trial if it doesn't meet your expectations.",
+    answer: "Yes! We offer a 24-hour free trial so you can test the stability and quality of our service before committing to a subscription. Contact us on WhatsApp to get your test line instantly.",
   },
 ];
 
@@ -36,7 +37,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="py-12 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[140px] rounded-full pointer-events-none" />
       
@@ -47,12 +48,12 @@ export default function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-3 md:mb-4">
             Frequently Asked <span className="bg-gradient-to-r from-[#0066FF] to-[#FF3399] bg-clip-text text-transparent">Questions</span>
           </h2>
-          <p className="text-xl text-slate-400">
+          <p className="text-base sm:text-lg md:text-xl text-slate-400">
             Everything you need to know about Hyper Sat
           </p>
         </motion.div>
@@ -63,56 +64,11 @@ export default function FAQ() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl mx-auto"
+          className="max-w-5xl mx-auto w-full"
         >
-          <div className="relative group">
-            {/* Pulsing Glow Border */}
-            <motion.div
-              className="absolute -inset-[2px] rounded-3xl opacity-75"
-              animate={{
-                background: [
-                  "linear-gradient(135deg, rgba(0, 102, 255, 0.5), rgba(255, 51, 153, 0.5), rgba(0, 102, 255, 0.5))",
-                  "linear-gradient(135deg, rgba(255, 51, 153, 0.5), rgba(0, 102, 255, 0.5), rgba(255, 51, 153, 0.5))",
-                  "linear-gradient(135deg, rgba(0, 102, 255, 0.5), rgba(255, 51, 153, 0.5), rgba(0, 102, 255, 0.5))",
-                ],
-                boxShadow: [
-                  "0 0 40px rgba(0, 102, 255, 0.4), 0 0 80px rgba(255, 51, 153, 0.3)",
-                  "0 0 60px rgba(255, 51, 153, 0.5), 0 0 100px rgba(0, 102, 255, 0.4)",
-                  "0 0 40px rgba(0, 102, 255, 0.4), 0 0 80px rgba(255, 51, 153, 0.3)",
-                ],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{
-                filter: "blur(8px)",
-              }}
-            />
-
-            {/* Animated Shimmer Effect */}
-            <motion.div
-              className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
-              animate={{
-                background: [
-                  "linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%)",
-                ],
-                x: ["-200%", "200%"],
-              }}
-              transition={{
-                x: {
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "linear",
-                },
-              }}
-            />
-
-            {/* Main Card Container */}
-            <div className="relative rounded-3xl bg-gradient-to-br from-[#0A0A0A]/95 via-[#0A0A0A]/90 to-[#0A0A0A]/95 backdrop-blur-2xl border border-white/20 p-1 overflow-hidden">
-              {/* Inner Content */}
-              <div className="relative rounded-[22px] bg-[#0A0A0A]/80 backdrop-blur-xl p-8 md:p-12">
+          <CosmicCard className="rounded-3xl w-full">
+            {/* Inner Content */}
+            <div className="relative p-6 sm:p-8 md:p-12">
                 {/* FAQ Accordion */}
                 <div className="space-y-4">
                   {faqs.map((faq, index) => (
@@ -126,9 +82,9 @@ export default function FAQ() {
                     >
                       <button
                         onClick={() => toggleFAQ(index)}
-                        className="w-full px-6 py-5 flex items-center justify-between text-left group/faq"
+                        className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left group/faq"
                       >
-                        <span className="text-lg font-semibold text-white group-hover/faq:text-[#0066FF] transition-colors pr-4">
+                        <span className="text-base sm:text-lg font-semibold text-white group-hover/faq:text-[#0066FF] transition-colors pr-2 sm:pr-4">
                           {faq.question}
                         </span>
                         <motion.div
@@ -160,9 +116,8 @@ export default function FAQ() {
                     </motion.div>
                   ))}
                 </div>
-              </div>
             </div>
-          </div>
+          </CosmicCard>
         </motion.div>
       </div>
     </section>
