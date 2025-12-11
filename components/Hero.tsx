@@ -44,7 +44,7 @@ export default function Hero() {
 
       {/* Main Content */}
       <div className="container relative z-10 flex flex-col items-center text-center px-4 pt-16 sm:pt-20 pb-16 sm:pb-32">
-        
+
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -93,7 +93,7 @@ export default function Hero() {
           >
             <ShinyButton text="Start Watching" href="#pricing" className="w-full sm:w-auto" />
           </motion.div>
-          
+
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Twitter, Facebook, Instagram, Mail } from "lucide-react";
-import Image from "next/image";
+import Image from "next-image-export-optimizer";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -39,7 +39,7 @@ export default function Footer() {
           <div>
             <div className="mb-6">
               <Image
-                src="/logo.png"
+                src="logo.png"
                 alt="Hyper Sat Logo"
                 width={160}
                 height={50}
@@ -60,11 +60,10 @@ export default function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className={`text-sm transition-all duration-300 ${
-                        category === "legal"
-                          ? "text-neutral-400 hover:text-white"
-                          : "text-slate-400 hover:text-[#0066FF] hover:drop-shadow-[0_0_8px_rgba(0,102,255,0.8)]"
-                      }`}
+                      className={`text-sm transition-all duration-300 ${category === "legal"
+                        ? "text-neutral-400 hover:text-white"
+                        : "text-slate-400 hover:text-[#0066FF] hover:drop-shadow-[0_0_8px_rgba(0,102,255,0.8)]"
+                        }`}
                     >
                       {link.label}
                     </a>

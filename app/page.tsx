@@ -8,10 +8,12 @@ import Reseller from "@/components/Reseller";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 
+import Testimonials from "@/components/Testimonials";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-transparent selection:bg-primary/20 overflow-x-hidden relative z-10">
-      
+
       <Navigation />
 
       <Hero />
@@ -36,6 +38,11 @@ export default function Home() {
         <Pricing />
       </section>
 
+      {/* Testimonials Section */}
+      <section id="testimonials" className="relative z-10">
+        <Testimonials />
+      </section>
+
       {/* FAQ Section */}
       <section id="faq" className="relative z-10">
         <FAQ />
@@ -50,7 +57,7 @@ export default function Home() {
       <section id="contact">
         <Footer />
       </section>
-      
+
     </main>
   );
 }

@@ -1,19 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image from "next-image-export-optimizer";
 
 const devices = [
-  { name: "Samsung", img: "/assets/devices/samsung.png" },
-  { name: "LG WebOS", img: "/assets/devices/lg.png" },
-  { name: "Android TV", img: "/assets/devices/android.png" },
-  { name: "Fire TV Stick", img: "/assets/devices/firetv.png" },
-  { name: "Roku", img: "/assets/devices/roku.png" },
-  { name: "Microsoft", img: "/assets/devices/microsoft.png" },
-  { name: "Apple", img: "/assets/devices/apple.png" },
-  { name: "VIDAA", img: "/assets/devices/vidaa.png" },
-  { name: "Whale TV", img: "/assets/devices/whaletv.png" },
-  { name: "Titan OS", img: "/assets/devices/titanos.png" },
+  { name: "Samsung", img: "assets/devices/samsung.png" },
+  { name: "LG WebOS", img: "assets/devices/lg.png" },
+  { name: "Android TV", img: "assets/devices/android.png" },
+  { name: "Fire TV Stick", img: "assets/devices/firetv.png" },
+  { name: "Roku", img: "assets/devices/roku.png" },
+  { name: "Microsoft", img: "assets/devices/microsoft.png" },
+  { name: "Apple", img: "assets/devices/apple.png" },
+  { name: "VIDAA", img: "assets/devices/vidaa.png" },
+  { name: "Whale TV", img: "assets/devices/whaletv.png" },
+  { name: "Titan OS", img: "assets/devices/titanos.png" },
 ];
 
 export default function SupportedDevices() {
@@ -37,7 +37,7 @@ export default function SupportedDevices() {
         <div className="relative w-full overflow-hidden">
           {/* Fade Mask - Left */}
           <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-[#0A0A0A] to-transparent z-20 pointer-events-none" />
-          
+
           {/* Fade Mask - Right */}
           <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-[#0A0A0A] to-transparent z-20 pointer-events-none" />
 
@@ -66,7 +66,7 @@ export default function SupportedDevices() {
                     width={160}
                     height={80}
                     className="w-auto h-auto max-w-full max-h-full object-contain"
-                    unoptimized
+                    loading="lazy"
                   />
                 </div>
               ))}
