@@ -17,7 +17,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Can I use on Smart TV?",
-    answer: "Yes! Hyper Sat is compatible with all Smart TVs, Android TV boxes, Fire TV Stick, Apple TV, and any device that supports IPTV applications. We provide setup guides for all platforms.",
+    answer: "Yes! Hyper Sat is compatible with all Smart TVs, Android TV boxes, Fire TV Stick, Apple TV, and any device that supports streaming applications. We provide setup guides for all platforms.",
   },
   {
     question: "Do you offer refunds?",
@@ -25,7 +25,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Is there a free trial?",
-    answer: "Yes! We offer a 24-hour free trial so you can test the stability and quality of our service before committing to a subscription. Contact us on WhatsApp to get your test line instantly.",
+    answer: "Yes! We offer a 24-hour trial so you can test the stability and quality of our service before committing to a subscription. Contact us on WhatsApp to get your test line instantly.",
   },
 ];
 
@@ -40,7 +40,7 @@ export default function FAQ() {
     <section className="py-12 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[140px] rounded-full pointer-events-none" />
-      
+
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Section Header */}
         <motion.div
@@ -69,53 +69,53 @@ export default function FAQ() {
           <CosmicCard className="rounded-3xl w-full">
             {/* Inner Content */}
             <div className="relative p-6 sm:p-8 md:p-12">
-                {/* FAQ Accordion */}
-                <div className="space-y-4">
-                  {faqs.map((faq, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ delay: index * 0.1, duration: 0.5 }}
-                      className="backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-[#0066FF]/50 transition-all duration-300"
+              {/* FAQ Accordion */}
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    className="backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-[#0066FF]/50 transition-all duration-300"
+                  >
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left group/faq"
                     >
-                      <button
-                        onClick={() => toggleFAQ(index)}
-                        className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left group/faq"
+                      <span className="text-base sm:text-lg font-semibold text-white group-hover/faq:text-[#0066FF] transition-colors pr-2 sm:pr-4">
+                        {faq.question}
+                      </span>
+                      <motion.div
+                        animate={{ rotate: openIndex === index ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex-shrink-0"
                       >
-                        <span className="text-base sm:text-lg font-semibold text-white group-hover/faq:text-[#0066FF] transition-colors pr-2 sm:pr-4">
-                          {faq.question}
-                        </span>
+                        <ChevronDown className="w-5 h-5 text-slate-400 group-hover/faq:text-[#0066FF] transition-colors" />
+                      </motion.div>
+                    </button>
+
+                    <AnimatePresence>
+                      {openIndex === index && (
                         <motion.div
-                          animate={{ rotate: openIndex === index ? 180 : 0 }}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="flex-shrink-0"
+                          className="overflow-hidden"
                         >
-                          <ChevronDown className="w-5 h-5 text-slate-400 group-hover/faq:text-[#0066FF] transition-colors" />
+                          <div className="px-6 pb-5 pt-0">
+                            <p className="text-slate-400 leading-relaxed">
+                              {faq.answer}
+                            </p>
+                          </div>
                         </motion.div>
-                      </button>
-                      
-                      <AnimatePresence>
-                        {openIndex === index && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="px-6 pb-5 pt-0">
-                              <p className="text-slate-400 leading-relaxed">
-                                {faq.answer}
-                              </p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
-                  ))}
-                </div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </CosmicCard>
         </motion.div>

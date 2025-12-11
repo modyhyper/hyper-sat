@@ -1,75 +1,59 @@
+"use client";
+
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+
 export default function PrivacyPolicy() {
   return (
-    <main className="min-h-screen bg-transparent">
-      <div className="container mx-auto px-4 py-24 max-w-4xl">
-        <h1 className="text-white text-4xl font-bold mb-8">Privacy Policy</h1>
-        
-        <div className="text-gray-400 leading-relaxed space-y-6">
-          <p className="mb-4">
-            Last updated: {new Date().getFullYear()}
-          </p>
+    <main className="min-h-screen bg-[#0A0A0A] text-white">
+      <Navigation />
 
-          <section>
-            <h2 className="text-white text-2xl font-semibold mt-8 mb-4">Information We Collect</h2>
-            <p className="mb-4">
-              We collect minimal data necessary to provide our streaming service. This includes:
-            </p>
-            <ul className="list-disc list-inside mb-4 space-y-2 ml-4">
-              <li>Email address - solely for order delivery and account management</li>
-              <li>Payment information - processed securely through third-party payment processors</li>
-              <li>Usage data - for service improvement and technical support</li>
+      <div className="container mx-auto px-4 py-24 sm:py-32 max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+            Privacy Policy
+          </h1>
+
+          <div className="prose prose-invert prose-lg max-w-none text-slate-300">
+            <h3 className="text-white font-bold mt-8 mb-4">1. Information We Collect</h3>
+            <p>We collect minimal information necessary to provide our services, including:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li><strong>Account Data:</strong> Name and Email address for account creation.</li>
+              <li><strong>Usage Data:</strong> Device type and login timestamps to ensure service optimization.</li>
+              <li><strong>Payment Data:</strong> All payments are processed through secure third-party gateways. We do not store your credit card information.</li>
             </ul>
-          </section>
 
-          <section>
-            <h2 className="text-white text-2xl font-semibold mt-8 mb-4">How We Use Your Information</h2>
-            <p className="mb-4">
-              We use the information we collect to:
-            </p>
-            <ul className="list-disc list-inside mb-4 space-y-2 ml-4">
-              <li>Deliver your account credentials and service access</li>
-              <li>Process payments and manage subscriptions</li>
-              <li>Provide customer support and technical assistance</li>
-              <li>Improve our service quality and user experience</li>
+            <h3 className="text-white font-bold mt-8 mb-4">2. How We Use Your Information</h3>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>To activate and manage your subscription.</li>
+              <li>To provide customer support and resolve technical issues.</li>
+              <li>To send important service updates or renewal reminders.</li>
             </ul>
-          </section>
 
-          <section>
-            <h2 className="text-white text-2xl font-semibold mt-8 mb-4">Data Protection</h2>
-            <p className="mb-4">
-              Your data is encrypted and secure. We implement industry-standard security measures to protect your personal information. We do not sell, trade, or rent your personal data to third parties.
+            <h3 className="text-white font-bold mt-8 mb-4">3. Data Protection</h3>
+            <p>
+              We implement industry-standard security measures (SSL encryption) to protect your personal data from unauthorized access.
             </p>
-          </section>
 
-          <section>
-            <h2 className="text-white text-2xl font-semibold mt-8 mb-4">Cookies</h2>
-            <p className="mb-4">
-              We use cookies solely for site functionality and to enhance your browsing experience. These cookies are essential for the website to function properly and do not track personal information.
+            <h3 className="text-white font-bold mt-8 mb-4">4. Third-Party Sharing</h3>
+            <p>
+              We do not sell, trade, or rent your personal identification information to others. We may share generic aggregated demographic information not linked to any personal identification regarding visitors and users with our business partners.
             </p>
-          </section>
 
-          <section>
-            <h2 className="text-white text-2xl font-semibold mt-8 mb-4">Your Rights</h2>
-            <p className="mb-4">
-              You have the right to:
+            <h3 className="text-white font-bold mt-8 mb-4">5. Cookies</h3>
+            <p>
+              Our website uses "cookies" to enhance the user experience. You may choose to set your web browser to refuse cookies, or to alert you when cookies are being sent.
             </p>
-            <ul className="list-disc list-inside mb-4 space-y-2 ml-4">
-              <li>Access your personal data</li>
-              <li>Request correction of inaccurate data</li>
-              <li>Request deletion of your data</li>
-              <li>Opt-out of non-essential communications</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-white text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
-            <p className="mb-4">
-              If you have any questions about this Privacy Policy, please contact us through our support channels.
-            </p>
-          </section>
-        </div>
+          </div>
+        </motion.div>
       </div>
+
+      <Footer />
     </main>
   );
 }
-

@@ -14,7 +14,7 @@ const features = [
   {
     icon: <Zap className="w-6 h-6 text-white" />,
     title: "High-Speed CDN",
-    description: "Powered by global server infrastructure ensuring low latency and buffer-free streaming.",
+    description: "Powered by global network infrastructure ensuring low latency and buffer-free streaming.",
   },
   {
     icon: <Smartphone className="w-6 h-6 text-white" />,
@@ -55,7 +55,7 @@ export default function FeatureGrid() {
   return (
     <section id="features" className="py-12 md:py-24 relative bg-transparent overflow-hidden">
       <div className="container px-4 relative z-10">
-        
+
         {/* العنوان */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -87,7 +87,7 @@ export default function FeatureGrid() {
             >
               <CosmicCard className="h-full">
                 <div className="p-8 h-full flex flex-col items-start transition-all duration-300 group-hover:bg-white/[0.02]">
-                  
+
                   {/* الأيقونة */}
                   <div className="flex items-center gap-4 mb-4">
                     <div className="h-12 w-12 rounded-xl border border-white/10 bg-gradient-to-br from-[#0066FF]/20 to-[#FF3399]/20 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform duration-300">
@@ -103,8 +103,8 @@ export default function FeatureGrid() {
 
                   {/* الخطوط الجمالية في الأسفل */}
                   <div className="mt-auto pt-2 w-full flex items-center gap-2 opacity-50">
-                      <div className="h-1.5 w-1.5 rounded-full bg-[#0066FF]" />
-                      <div className="h-[1px] flex-1 bg-gradient-to-r from-[#0066FF]/50 to-transparent" />
+                    <div className="h-1.5 w-1.5 rounded-full bg-[#0066FF]" />
+                    <div className="h-[1px] flex-1 bg-gradient-to-r from-[#0066FF]/50 to-transparent" />
                   </div>
                 </div>
               </CosmicCard>

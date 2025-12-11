@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Film, Play } from "lucide-react";
 import Image from "next-image-export-optimizer";
 
-// 1. بيانات القنوات (مع مسارات الصور)
+// 1. Content Data (with image paths)
 const channels = [
   { name: "beIN", imagePath: "assets/logos/bein.png" },
   { name: "NETFLIX", imagePath: "assets/logos/netflix.png" },
@@ -35,7 +35,7 @@ export default function ContentTicker() {
       <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#0A0A0A] to-transparent z-30" />
       <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#0A0A0A] to-transparent z-30" />
 
-      {/* --- الصف الأول: القنوات (يتحرك لليسار) --- */}
+      {/* --- Row 1: Content (Moves Left) --- */}
       <div className="mb-6 relative flex w-full">
         <motion.div
           className="flex gap-4"
