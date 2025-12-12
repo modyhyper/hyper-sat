@@ -87,7 +87,10 @@ export default function ContentTicker() {
                 src={movie.img}
                 alt={movie.title}
                 fill
+<<<<<<< HEAD
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+=======
+>>>>>>> 61ffc86bb626781ce6abd3b528f59ad572e4c635
                 className="object-cover"
               />
 
