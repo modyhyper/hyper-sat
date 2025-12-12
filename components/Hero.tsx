@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Play, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import ContentTicker from "./ContentTicker";
+import ShinyButton from "./ShinyButton";
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -20,7 +21,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-[#0A0A0A]"
+      className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-transparent"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -32,7 +33,7 @@ export default function Hero() {
       <motion.div
         className="absolute inset-0 pointer-events-none z-0"
         animate={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(0,102,255,0.15), transparent 40%)`,
+          background: `radial-gradient(clamp(300px, 40vw, 600px) circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(0,102,255,0.15), transparent 40%)`,
         }}
         transition={{
           type: "tween",
@@ -42,17 +43,17 @@ export default function Hero() {
       />
 
       {/* Main Content */}
-      <div className="container relative z-10 flex flex-col items-center text-center px-4 pt-20 pb-32">
-        
+      <div className="container relative z-10 flex flex-col items-center text-center px-4 pt-16 sm:pt-20 pb-16 sm:pb-32">
+
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm font-medium text-gray-300 flex items-center gap-2"
+          className="mb-4 md:mb-6 px-3 sm:px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs sm:text-sm font-medium text-gray-300 flex items-center gap-2"
         >
-          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          The #1 Premium IPTV Service
+          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
+          <span className="whitespace-nowrap">The #1 Premium Streaming Platform</span>
         </motion.div>
 
         {/* Main Heading */}
@@ -60,11 +61,11 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-5xl md:text-8xl font-bold tracking-tighter text-white mb-6"
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold tracking-tighter text-white mb-4 md:mb-6"
         >
-          The World is Yours <br />
+          Unlimited Entertainment. <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-accent">
-            To Stream.
+            Zero Limits.
           </span>
         </motion.h1>
 
@@ -73,10 +74,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="max-w-2xl text-lg md:text-xl text-gray-400 mb-10"
+          className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-400 mb-8 md:mb-10 px-4"
         >
-          Experience +10,000 Channels in 4K Quality. No Freezing. No Limits.
-          Compatible with all your smart devices.
+          Upgrade your viewing experience with the world's most stable streaming network. Compatible with all your favorite devices in stunning 4K & Ultra HD quality.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -84,25 +84,30 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 w-full justify-center mb-16"
+          className="flex flex-col sm:flex-row gap-4 w-full max-w-md sm:max-w-none justify-center mb-12 md:mb-16 px-4"
         >
-          <motion.button
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-8 py-4 bg-primary text-white rounded-full font-semibold text-lg hover:shadow-[0_0_40px_-10px_rgba(0,102,255,0.5)] transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto"
           >
-            <Play className="w-5 h-5 fill-current" />
-            Start Free Trial
-          </motion.button>
-          
-          <motion.button
+            <ShinyButton text="Start Watching" href="#pricing" className="w-full sm:w-auto" />
+          </motion.div>
+
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-white/5 border border-white/10 backdrop-blur-sm text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto"
           >
-            View Plans
-            <ChevronRight className="w-5 h-5" />
-          </motion.button>
+            <Link href="#features" className="w-full sm:w-auto">
+              <button
+                type="button"
+                className="w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-full bg-primary text-white border border-primary/50 hover:border-primary shadow-[0_0_20px_rgba(0,102,255,0.5)] hover:shadow-[0_0_35px_rgba(0,102,255,0.8)] shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
+              >
+                Learn More
+              </button>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
 

@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import SupportedDevices from "@/components/SupportedDevices";
 import About from "@/components/About";
 import FeatureGrid from "@/components/FeatureGrid";
 import Pricing from "@/components/Pricing";
@@ -7,10 +8,12 @@ import Reseller from "@/components/Reseller";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 
+import Testimonials from "@/components/Testimonials";
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A] selection:bg-primary/20 overflow-x-hidden">
-      
+    <main className="min-h-screen bg-transparent selection:bg-primary/20 overflow-x-hidden relative z-10">
+
       <Navigation />
 
       <Hero />
@@ -25,9 +28,19 @@ export default function Home() {
         <FeatureGrid />
       </section>
 
+      {/* Supported Devices Section */}
+      <section className="relative z-10">
+        <SupportedDevices />
+      </section>
+
       {/* Pricing Section */}
       <section id="pricing" className="relative z-10">
         <Pricing />
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="relative z-10">
+        <Testimonials />
       </section>
 
       {/* FAQ Section */}
@@ -44,7 +57,7 @@ export default function Home() {
       <section id="contact">
         <Footer />
       </section>
-      
+
     </main>
   );
 }

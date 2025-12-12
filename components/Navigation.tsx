@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
+import Image from "next-image-export-optimizer";
+import ShinyButton from "./ShinyButton";
 
 interface NavigationProps {
   locale?: "en" | "ar";
@@ -28,6 +29,7 @@ export default function Navigation({ locale = "en" }: NavigationProps) {
   }, []);
 
   const navItems = [
+    { label: "Home", href: "/" },
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "#pricing" },
     { label: "About", href: "#about" },
@@ -41,11 +43,10 @@ export default function Navigation({ locale = "en" }: NavigationProps) {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "backdrop-blur-md bg-black/20 border-b border-white/10"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "backdrop-blur-md bg-black/20 border-b border-white/10"
+        : "bg-transparent"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -57,11 +58,11 @@ export default function Navigation({ locale = "en" }: NavigationProps) {
             className="flex items-center space-x-2 rtl:space-x-reverse group"
           >
             <Image
-              src="/logo.png"
+              src="/logo-trans.png"
               alt="Hyper Sat Logo"
-              width={140}
-              height={40}
-              className="h-8 sm:h-10 w-auto object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_10px_rgba(0,102,255,0.5)]"
+              width={150}
+              height={50}
+              className="h-12 w-auto object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_10px_rgba(0,102,255,0.5)]"
               priority
             />
           </motion.a>
@@ -74,25 +75,17 @@ export default function Navigation({ locale = "en" }: NavigationProps) {
                 href={item.href}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`transition-all duration-300 font-medium ${
-                  item.special
-                    ? "text-amber-400 hover:text-amber-300 font-semibold hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]"
-                    : "text-slate-400 hover:text-[#0066FF] hover:drop-shadow-[0_0_8px_rgba(0,102,255,0.8)]"
-                }`}
+                className={`transition-all duration-300 font-medium ${item.special
+                  ? "text-amber-400 hover:text-amber-300 font-semibold hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]"
+                  : "text-slate-400 hover:text-[#0066FF] hover:drop-shadow-[0_0_8px_rgba(0,102,255,0.8)]"
+                  }`}
               >
                 {item.label}
               </motion.a>
             ))}
-            <motion.a
-              href="https://wa.me/201128498956"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 bg-[#0066FF] text-white rounded-lg font-semibold shadow-[0_0_20px_rgba(0,102,255,0.3)] hover:shadow-[0_0_30px_rgba(0,102,255,0.5)] transition-all duration-300"
-            >
-              Get Started
-            </motion.a>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <ShinyButton text="Get Started" href="https://wa.me/201128498956" />
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -122,24 +115,17 @@ export default function Navigation({ locale = "en" }: NavigationProps) {
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   whileTap={{ scale: 0.95 }}
-                  className={`block transition-all duration-300 font-medium py-2 ${
-                    item.special
-                      ? "text-amber-400 hover:text-amber-300 font-semibold hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]"
-                      : "text-slate-400 hover:text-[#0066FF] hover:drop-shadow-[0_0_8px_rgba(0,102,255,0.8)]"
-                  }`}
+                  className={`block transition-all duration-300 font-medium py-2 ${item.special
+                    ? "text-amber-400 hover:text-amber-300 font-semibold hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]"
+                    : "text-slate-400 hover:text-[#0066FF] hover:drop-shadow-[0_0_8px_rgba(0,102,255,0.8)]"
+                    }`}
                 >
                   {item.label}
                 </motion.a>
               ))}
-              <motion.a
-                href="https://wa.me/201128498956"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileTap={{ scale: 0.95 }}
-                className="w-full px-6 py-2.5 bg-[#0066FF] text-white rounded-lg font-semibold shadow-[0_0_20px_rgba(0,102,255,0.3)] text-center block"
-              >
-                Get Started
-              </motion.a>
+              <motion.div whileTap={{ scale: 0.95 }}>
+                <ShinyButton text="Get Started" href="https://wa.me/201128498956" className="w-full" />
+              </motion.div>
             </div>
           </motion.div>
         )}

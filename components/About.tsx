@@ -55,10 +55,10 @@ const itemVariants = {
 
 export default function About() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="py-12 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[140px] rounded-full pointer-events-none" />
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           variants={containerVariants}
@@ -74,24 +74,17 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white"
             >
               Streaming Beyond{" "}
               <span className="bg-gradient-to-r from-[#0066FF] to-[#FF3399] bg-clip-text text-transparent">
                 Boundaries.
               </span>
             </motion.h2>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl"
-            >
-              Hyper Sat isn't just an IPTV service; it's a gateway to global entertainment. 
-              Established in 2023, we provide unparalleled stability and quality.
-            </motion.p>
+
+            <p className="text-slate-400 text-lg leading-relaxed mb-6">
+              Hyper Sat isn't just a streaming platform; it's a gateway to global entertainment. Established in 2020, we provide unparalleled stability and quality.
+            </p>
           </motion.div>
 
           {/* Right Side: Stats Grid */}
@@ -113,7 +106,7 @@ export default function About() {
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}
                 />
-                
+
                 <div className="relative z-10">
                   {/* Icon */}
                   <div
@@ -121,12 +114,12 @@ export default function About() {
                   >
                     {stat.icon}
                   </div>
-                  
+
                   {/* Value */}
                   <div className="text-3xl md:text-4xl font-bold text-white mb-2">
                     {stat.value}
                   </div>
-                  
+
                   {/* Label */}
                   <div className="text-slate-400 font-medium">{stat.label}</div>
                 </div>

@@ -72,8 +72,12 @@
   * {
     @apply border-border;
   }
+  html {
+    background-color: #0A0A0A;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: transparent;
   }
 }
 
@@ -96,5 +100,111 @@
   .bg-gradient-radial {
     background: radial-gradient(circle, var(--tw-gradient-stops));
   }
+  /* --- Shiny Button Styles (Hyper Sat Brand) --- */
+@property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@property --gradient-percent { syntax: "<percentage>"; initial-value: 20%; inherits: false; }
+@property --gradient-shine { syntax: "<color>"; initial-value: #FF3399; inherits: false; } /* لون اللمعان الوردي */
+
+.shiny-cta {
+  --gradient-angle: 0deg;
+  --gradient-angle-offset: 0deg;
+  --gradient-percent: 20%;
+  --gradient-shine: #FF3399; /* لون اللمعان الوردي */
+  --shadow-size: 2px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  padding: 1rem 2.5rem; /* تعديل الحجم */
+  font-size: 1.125rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #ffffff;
+  /* الخلفية والحدود بألوان البراند */
+  background: linear-gradient(#0A0A0A, #0A0A0A) padding-box, 
+              conic-gradient( from calc(var(--gradient-angle) - var(--gradient-angle-offset)), 
+              transparent 0%, #0066FF 5%, var(--gradient-shine) 15%, #0066FF 30%, transparent 40%, transparent 100% ) border-box;
+  border: 2px solid transparent;
+  box-shadow: inset 0 0 0 1px #0A0A0A;
+  outline: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  isolation: isolate;
+  outline-offset: 4px;
+  z-index: 0;
+  animation: border-spin 2.5s linear infinite;
+}
+
+@keyframes border-spin { to { --gradient-angle: 360deg; } }
+
+.shiny-cta:active { transform: translateY(1px) scale(0.98); }
+
+.shiny-cta::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  /* النقاط الخلفية */
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 0);
+  background-size: 8px 8px;
+  mask-image: conic-gradient( from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black );
+  border-radius: inherit;
+  opacity: 0.3;
+}
+
+.shiny-cta::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(-50deg, transparent, #0066FF, transparent); /* اللمعة الزرقاء */
+  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  opacity: 0.4;
+  animation: shimmer 4s linear infinite;
+}
+
+.shiny-cta span { position: relative; z-index: 2; display: inline-block; }
+
+@keyframes shimmer { to { transform: translate(-50%, -50%) rotate(360deg);} }
+
+/* Rotating Border Animation */
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.animate-rotate {
+  animation: rotate 8s linear infinite;
+}
+
+/* Shimmer Animation for Cosmic Glass */
+@keyframes shimmer-diagonal {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.animate-shimmer {
+  animation: shimmer-diagonal 3s ease-in-out infinite;
+}
+
+/* Pulse Animation for Icons */
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.animate-pulse-glow {
+  animation: pulse 2s ease-in-out infinite;
+}
 }
 
